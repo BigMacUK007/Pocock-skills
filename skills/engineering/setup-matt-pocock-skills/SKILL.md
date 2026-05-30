@@ -71,22 +71,23 @@ Confirm the layout:
 
 Show the user a draft of:
 
-- The `## Agent skills` block to add to whichever of `CLAUDE.md` / `AGENTS.md` is being edited (see step 4 for selection rules)
+- The `## Agent skills` block to add to `CLAUDE.md`, `AGENTS.md`, or both (see step 4 for selection rules)
 - The contents of `docs/agents/issue-tracker.md`, `docs/agents/triage-labels.md`, `docs/agents/domain.md`
 
 Let them edit before writing.
 
 ### 4. Write
 
-**Pick the file to edit:**
+**Pick the file(s) to edit:**
 
-- If `CLAUDE.md` exists, edit it.
-- Else if `AGENTS.md` exists, edit it.
-- If neither exists, ask the user which one to create — don't pick for them.
+- If **both** `CLAUDE.md` and `AGENTS.md` exist, edit **both** with the same `## Agent skills` block. The user is running multiple coding agents (e.g. Claude Code + Codex) and expects each one's instruction file to be self-contained.
+- Else if only `CLAUDE.md` exists, edit it.
+- Else if only `AGENTS.md` exists, edit it.
+- If neither exists, ask the user which one(s) to create — don't pick for them. If they're unsure, ask which coding agents they use; create both if they use Claude Code + a non-Claude agent.
 
-Never create `AGENTS.md` when `CLAUDE.md` already exists (or vice versa) — always edit the one that's already there.
+Never create the second file when only one already exists unless the user explicitly asks for it — they may be intentionally running a single agent.
 
-If an `## Agent skills` block already exists in the chosen file, update its contents in-place rather than appending a duplicate. Don't overwrite user edits to the surrounding sections.
+If an `## Agent skills` block already exists in any chosen file, update its contents in-place rather than appending a duplicate. Don't overwrite user edits to the surrounding sections. When editing both files, keep the two blocks identical.
 
 The block:
 
